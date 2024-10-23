@@ -1,5 +1,215 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
 
 .page {
-  /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
+  color: var(--text-color, #353430);
+  font-family: var(--main-font, 'IBM Plex Mono');
+  font-weight: normal;
+  font-size: 18px;
+  background-color: var(--bg-color, #FFC2E6);
+}
+
+.header {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  grid-template-rows: 1fr min-content 1fr;
+  justify-content: center;
+  align-content: stretch;
+  padding: 20px;
+  background-image: url(../images/cover-image-light.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  min-block-size: 100vh;
+}
+
+.decorated-zone::after,
+.decorated-zone::before {
+  content: "";
+  position: absolute;
+  inline-size: 25px;
+  block-size: 25px;
+}
+
+.decorated-zone::after {
+  border-inline-start: 1px solid var(--text-color, #353430);
+  border-block-end: 1px solid var(--text-color, #353430);
+  inset-block-end: 20px;
+  inset-inline-start: 20px;
+}
+
+.decorated-zone::before {
+  border-inline-end: 1px solid var(--text-color, #353430);
+  border-block-start: 1px solid var(--text-color, #353430);
+  inset-inline-end: 0;
+  inset-block-start: 20px;
+  inset-inline-end: 20px;
+}
+
+.header__theme-menu {
+  display: flex;
+  grid-column: span 2;
+  justify-content: center;
+}
+
+.header__theme-menu-list {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.header__theme-menu-button {
+  border: none;
+  color: currentColor;
+  font-family: inherit;
+  line-height: 18px;
+  text-transform: lowercase;
+  background-color: inherit;
+  min-inline-size: 70px;
+  block-size: 26px;
+}
+
+.header__theme-menu-button:hover {
+  cursor: pointer;
+}
+
+.header__theme-menu-button_active {
+  border: 1px solid currentColor;
+}
+
+.heading {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  margin-inline-start: -20px;
+  color: var(--heading-color, #FFC2E6);
+  font-weight: bold;
+  font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  line-height: 82.5%;
+  text-transform: lowercase;
+  text-shadow: 4px 4px 0 var(--accent-color);
+}
+
+.header__text-block {
+  grid-column-start: 2;
+  grid-row-start: 3;
+  justify-self: end;
+  padding-block-start: 7.125rem;
+  inline-size: 100%;
+}
+
+.title-decor {
+  font-weight: bold;
+  font-size: inherit;
+  line-height: 24px;
+  background-color: var(--accent-color, #FF8DCB);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  padding: 60px 20px;
+}
+
+.content__article {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+}
+
+.why-block .content__title {
+  grid-row: span 2;
+}
+
+.content__title {
+  font-weight: bold;
+  font-size: inherit;
+  line-height: 24px;
+}
+
+.content__text-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.what-block {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  gap: 20px;
+}
+
+.what-block .content__title {
+  grid-column: span 3;
+  inline-size: 30%;
+}
+
+.how-block__text-area {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.content__subtitle {
+  font-weight: inherit;
+  background-color: var(--accent-color, #FF8DCB);
+}
+
+.gallery__content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, auto);
+  grid-template-areas:
+  "title title title"
+  "sunset sunset ice-cream"
+  "tape books ice-cream"
+  "tape street street";
+  grid-column-start: 1;
+  gap: 20px;
+  inline-size: 100%;
+}
+
+.gallery__title {
+ grid-area: title;
+}
+
+.gallery__item-1 {
+  grid-area: sunset;
+}
+
+.gallery__item-2 {
+  grid-area: ice-cream;
+}
+
+.gallery__item-3 {
+  grid-row: tape;
+}
+
+.gallery__item-4 {
+  grid-row: books;
+}
+
+.gallery__item-5 {
+  grid-column: street;
+}
+
+.image {
+  object-fit: cover;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.footer {
+  position: relative;
+  inline-size: 100vw;
+  block-size: 100vh;
+}
+
+.footer__title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  block-size: 100%;
 }
