@@ -134,6 +134,11 @@
   gap: 10px;
 }
 
+.text-link {
+  text-shadow: 4px 4px 0 var(--accent-color);
+  text-decoration: none;
+}
+
 .what-block {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
