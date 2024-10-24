@@ -1,11 +1,16 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
 
 .page {
-  color: var(--text-color, #353430);
-  font-family: var(--main-font, 'IBM Plex Mono');
+  /* color: var(--text-color, #353430); */
+  font-family: var(--main-font, 'IBM Plex Mono', monospace);
   font-weight: normal;
   font-size: 18px;
   background-color: var(--bg-color, #FFC2E6);
+  background-image: var(--bg-image);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .header {
@@ -16,7 +21,7 @@
   justify-content: center;
   align-content: stretch;
   padding: 20px;
-  background-image: url(../images/cover-image-light.png);
+  
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -32,18 +37,18 @@
 }
 
 .decorated-zone::after {
-  border-inline-start: 1px solid var(--text-color, #353430);
-  border-block-end: 1px solid var(--text-color, #353430);
+  border-inline-start: 1px solid var(--accent-text-color, #353430);
+  border-block-end: 1px solid var(--accent-text-color, #353430);
   inset-block-end: 20px;
   inset-inline-start: 20px;
 }
 
 .decorated-zone::before {
-  border-inline-end: 1px solid var(--text-color, #353430);
-  border-block-start: 1px solid var(--text-color, #353430);
-  inset-inline-end: 0;
+  border-inline-end: 1px solid var(--accent-text-color, #353430);
+  border-block-start: 1px solid var(--accent-text-color, #353430);
   inset-block-start: 20px;
   inset-inline-end: 20px;
+  /*пидораска не отображается на планшете*/
 }
 
 .header__theme-menu {
@@ -60,7 +65,7 @@
 
 .header__theme-menu-button {
   border: none;
-  color: currentColor;
+  color: var(--accent-text-color, #353430);
   font-family: inherit;
   line-height: 18px;
   text-transform: lowercase;
@@ -71,10 +76,44 @@
 
 .header__theme-menu-button:hover {
   cursor: pointer;
+  border: 1px solid var(--button-hover-color);
+  /* opacity: 40%;  */
+  /* fix */
+}
+
+.header__theme-menu-button:focus {
+  outline: none;
+}
+
+.header__theme-menu-button:focus-visible {
+  border-block-end: 1px solid var(--accent-text-color, #353430);
+}
+
+.header__theme-menu-button:disabled {
+  pointer-events: none;
 }
 
 .header__theme-menu-button_active {
   border: 1px solid currentColor;
+}
+
+.header__dark-decoration {
+  position: absolute;
+  top: 20px;
+  right: 48px;
+  color: var(--accent-text-color);
+}
+
+.header__dark-decoration::after {
+  content: "";
+  position: absolute;
+  inline-size: 9px;
+  block-size: 9px;
+  background-color: var(--accent-text-color);
+  border-radius: 50%;
+  box-shadow: 0 0 4px 3px var(--accent-text-color);
+  top: 7px;
+  left: 43px;
 }
 
 .heading {
@@ -87,14 +126,13 @@
   font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
   line-height: 82.5%;
   text-transform: lowercase;
-  text-shadow: 4px 4px 0 var(--accent-color);
+  text-shadow: 4px 4px 0 var(--accent-color, #FF8DCB);
 }
 
 .header__text-block {
   grid-column-start: 2;
   grid-row-start: 3;
-  justify-self: end;
-  padding-block-start: 7.125rem;
+  align-self: center;
   inline-size: 100%;
 }
 
@@ -103,6 +141,7 @@
   font-size: inherit;
   line-height: 24px;
   background-color: var(--accent-color, #FF8DCB);
+  color: var(--subtitle-text-color);
 }
 
 .content {
@@ -126,6 +165,7 @@
   font-weight: bold;
   font-size: inherit;
   line-height: 24px;
+  color: var(--accent-text-color);
 }
 
 .content__text-block {
@@ -134,9 +174,25 @@
   gap: 10px;
 }
 
+.content__paragraph {
+  color: var(--text-color);
+}
+
 .text-link {
-  text-shadow: 4px 4px 0 var(--accent-color);
+  text-shadow: 2px 2px 0 var(--accent-color);
   text-decoration: none;
+}
+
+.text-link:hover {
+  border-block-end: 1px solid var(--text-color, #353430);
+}
+
+.text-link:focus {
+  outline: none;
+}
+
+.text-link:focus-visible {
+  border: 1px solid var(--text-color, #353430);
 }
 
 .what-block {
@@ -160,12 +216,12 @@
 .content__subtitle {
   font-weight: inherit;
   background-color: var(--accent-color, #FF8DCB);
+  color: var(--subtitle-text-color);
 }
 
 .gallery__content {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(4, auto);
   grid-template-areas:
   "title title title"
   "sunset sunset ice-cream"
@@ -208,13 +264,81 @@
 
 .footer {
   position: relative;
-  inline-size: 100vw;
+  inline-size: 100%;
   block-size: 100vh;
 }
 
 .footer__title {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   block-size: 100%;
+}
+
+@media (width < 1024px) {
+  .header__theme-menu {
+    grid-column-start: 2;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .header__theme-menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .what-block {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media (width < 768px) {
+
+  .header {
+    padding: 10px;
+    grid-template-columns: 1fr;
+  }
+
+  .header__dark-decoration {
+    top: 10px;
+    right: 38px;
+  }
+
+  .decorated-zone::after {
+    inset-block-end: 10px;
+    inset-inline-start: 10px;
+  }
+
+  .decorated-zone::before {
+    inset-block-start: 10px;
+    inset-inline-end: 10px;
+  }
+
+  .heading {
+    margin-inline-start: 0;
+    font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  }
+
+  .content {
+    padding: 40px 10px;
+    gap: 50px;
+  }
+
+  .content__article {
+    grid-template-columns: 1fr;
+  }
+
+  .what-block .content__title {
+    inline-size: 100%;
+  }
+
+  .gallery__content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
 }
