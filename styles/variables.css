@@ -1,17 +1,11 @@
-/*
-  Переменные для вашего проекта
-  и их переопределение под различные устройства
-*/
 :root {
   --bg-color: #FFF1F7;
   --text-color: #353430;
   --accent-text-color: #353430;
   --subtitle-text-color: #353430;
   --heading-color: #FFC2E6;
-  --accent-bg-color: #FF8DCB;
+  --accent-color: #FF8DCB;
   --main-font: 'IBM Plex Mono';
-  /* --main-font-weight: normal;
-  --accent-font-weight: bold; */
   --bg-image: url(../images/cover-image-light.png);
-  --button-hover-color: rgba(50,49,45, 0.3);
+  --button-hover-color: rgba(50,49,45, 0.4);
 }

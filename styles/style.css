@@ -1,7 +1,4 @@
-/* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
-
 .page {
-  /* color: var(--text-color, #353430); */
   font-family: var(--main-font, 'IBM Plex Mono', monospace);
   font-weight: normal;
   font-size: 18px;
@@ -21,11 +18,10 @@
   justify-content: center;
   align-content: stretch;
   padding: 20px;
-  
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  min-block-size: 100vh;
+  min-block-size: 48rem;
 }
 
 .decorated-zone::after,
@@ -48,7 +44,6 @@
   border-block-start: 1px solid var(--accent-text-color, #353430);
   inset-block-start: 20px;
   inset-inline-end: 20px;
-  /*пидораска не отображается на планшете*/
 }
 
 .header__theme-menu {
@@ -75,10 +70,8 @@
 }
 
 .header__theme-menu-button:hover {
+  border: 1px solid var(--button-hover-color, rgba(50,49,45, 0.4));
   cursor: pointer;
-  border: 1px solid var(--button-hover-color);
-  /* opacity: 40%;  */
-  /* fix */
 }
 
 .header__theme-menu-button:focus {
@@ -98,22 +91,7 @@
 }
 
 .header__dark-decoration {
-  position: absolute;
-  top: 20px;
-  right: 48px;
-  color: var(--accent-text-color);
-}
-
-.header__dark-decoration::after {
-  content: "";
-  position: absolute;
-  inline-size: 9px;
-  block-size: 9px;
-  background-color: var(--accent-text-color);
-  border-radius: 50%;
-  box-shadow: 0 0 4px 3px var(--accent-text-color);
-  top: 7px;
-  left: 43px;
+  visibility: hidden;
 }
 
 .heading {
@@ -137,11 +115,11 @@
 }
 
 .title-decor {
+  color: var(--subtitle-text-color);
   font-weight: bold;
   font-size: inherit;
   line-height: 24px;
   background-color: var(--accent-color, #FF8DCB);
-  color: var(--subtitle-text-color);
 }
 
 .content {
@@ -162,10 +140,10 @@
 }
 
 .content__title {
+  color: var(--accent-text-color, #353430);
   font-weight: bold;
   font-size: inherit;
   line-height: 24px;
-  color: var(--accent-text-color);
 }
 
 .content__text-block {
@@ -175,12 +153,12 @@
 }
 
 .content__paragraph {
-  color: var(--text-color);
+  color: var(--text-color, #353430);
 }
 
 .text-link {
-  text-shadow: 2px 2px 0 var(--accent-color);
   text-decoration: none;
+  text-shadow: 2px 2px 0 var(--accent-color, #FF8DCB);
 }
 
 .text-link:hover {
@@ -214,9 +192,9 @@
 }
 
 .content__subtitle {
+  color: var(--subtitle-text-color, #353430);
   font-weight: inherit;
   background-color: var(--accent-color, #FF8DCB);
-  color: var(--subtitle-text-color);
 }
 
 .gallery__content {
@@ -227,9 +205,7 @@
   "sunset sunset ice-cream"
   "tape books ice-cream"
   "tape street street";
-  grid-column-start: 1;
   gap: 20px;
-  inline-size: 100%;
 }
 
 .gallery__title {
@@ -264,22 +240,23 @@
 
 .footer {
   position: relative;
-  inline-size: 100%;
-  block-size: 100vh;
-}
-
-.footer__title {
   display: flex;
-  align-items: center;
   justify-content: center;
-  block-size: 100%;
+  align-items: center;
+  inline-size: 100%;
+  min-block-size: 48rem;
 }
 
 @media (width < 1024px) {
+  .header,
+  .footer {
+    min-block-size: 64rem;
+  }
+
   .header__theme-menu {
     grid-column-start: 2;
-    align-items: center;
     justify-content: flex-end;
+    align-items: center;
   }
 
   .header__theme-menu-list {
@@ -298,13 +275,9 @@
 @media (width < 768px) {
 
   .header {
-    padding: 10px;
     grid-template-columns: 1fr;
-  }
-
-  .header__dark-decoration {
-    top: 10px;
-    right: 38px;
+    padding: 10px;
+    min-block-size: 41.75rem;
   }
 
   .decorated-zone::after {
@@ -323,8 +296,8 @@
   }
 
   .content {
-    padding: 40px 10px;
     gap: 50px;
+    padding: 40px 10px;
   }
 
   .content__article {
@@ -341,4 +314,7 @@
     gap: 10px;
   }
 
+  .footer {
+    min-block-size: 41.75rem;
+  }
 }

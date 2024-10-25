@@ -1,17 +1,4 @@
-/*
-  Специально для тёмной темы при наличии класса,
-  здесь окажутся стили, которые нужно переопределить принудительно,
-  переключая тему
-*/
-
 .page.theme_dark {
-  /* сохраните этот селектор в приведённом виде.
-    Так стили написанные ниже будут иметь больший вес,
-    чем стили в медиазапросе предпочтений пользователя
-  */
-}
-
-:root.page.theme_dark {
   --bg-color: #000028;
   --text-color: #F1B2CE;
   --accent-text-color: #FF0070;
@@ -19,10 +6,28 @@
   --heading-color: #DB00FF;
   --accent-color: #FF0070;
   --main-font: 'IBM Plex Mono';
-  /* --main-font-weight: normal;
-  --accent-font-weight: bold; */
   --bg-image: url(../images/cover-image-dark.png);
-  --button-hover-color: rgba(255,0,112, 0.3)
+  --button-hover-color: rgba(255,0,112, 0.4)
+}
+
+.theme_dark .header__dark-decoration {
+  position: absolute;
+  inset-block-start: 20px;
+  inset-inline-end: 48px;
+  color: var(--accent-text-color, #353430);
+  visibility: visible;
+}
+
+.theme_dark .header__dark-decoration::after {
+  content: "";
+  position: absolute;
+  inline-size: 9px;
+  block-size: 9px;
+  background-color: var(--accent-text-color, #353430);
+  border-radius: 50%;
+  box-shadow: 0 0 4px 3px var(--accent-text-color, #353430);
+  inset-block-start: 7px;
+  inset-inline-start: 43px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -34,11 +39,40 @@
   --heading-color: #DB00FF;
   --accent-color: #FF0070;
   --main-font: 'IBM Plex Mono';
-  /* --main-font-weight: normal;
-  --accent-font-weight: bold; */
   --bg-image: url(../images/cover-image-dark.png);
-  --button-hover-color: rgba(255,0,112, 0.3)
- }
+  --button-hover-color: rgba(255,0,112, 0.4)
+ } 
 
- 
+ .theme_auto .header__dark-decoration {
+  position: absolute;
+  inset-block-start: 20px;
+  inset-inline-end: 48px;
+  color: var(--accent-text-color, #353430);
+  visibility: visible;
+}
+
+.theme_auto .header__dark-decoration::after {
+  content: "";
+  position: absolute;
+  inline-size: 9px;
+  block-size: 9px;
+  background-color: var(--accent-text-color, #353430);
+  border-radius: 50%;
+  box-shadow: 0 0 4px 3px var(--accent-text-color, #353430);
+  inset-block-start: 7px;
+  inset-inline-end: 43px;
+}
+}
+
+@media (width < 768px) {
+
+  .theme_dark .header__dark-decoration {
+    inset-block-start: 10px;
+    inset-inline-end: 38px;
+  }
+
+  .theme_auto .header__dark-decoration {
+    inset-block-start: 10px;
+    inset-inline-end: 38px;
+  }
 }
