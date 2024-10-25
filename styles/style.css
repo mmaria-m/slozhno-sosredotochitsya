@@ -1,5 +1,5 @@
 .page {
-  font-family: var(--main-font, 'IBM Plex Mono', monospace);
+  font-family: var(--main-font, 'IBM Plex Mono', monospace), sans-serif;
   font-weight: normal;
   font-size: 18px;
   background-color: var(--bg-color, #FFC2E6);
@@ -21,7 +21,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  block-size: min(100vh, 48rem);
+  block-size: max(100vh, 48rem);
 }
 
 .decorated-zone::after,
@@ -132,10 +132,6 @@
   gap: 20px;
 }
 
-.why-block .content__title {
-  grid-row: span 2;
-}
-
 .content__title {
   color: var(--accent-text-color, #353430);
   font-weight: bold;
@@ -171,6 +167,13 @@
   border: 1px solid var(--text-color, #353430);
 }
 
+.why-block__text-area, 
+.how-block__text-area {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .what-block {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -181,12 +184,6 @@
 .what-block .content__title {
   grid-column: span 3;
   inline-size: 30%;
-}
-
-.how-block__text-area {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
 }
 
 .content__subtitle {
@@ -243,13 +240,13 @@
   justify-content: center;
   align-items: center;
   inline-size: 100%;
-  block-size: min(100vh, 48rem);
+  block-size: max(100vh, 48rem);
 }
 
 @media (width < 1024px) {
   .header,
   .footer {
-    block-size: min(100vh, 64rem);
+    block-size: max(100vh, 64rem);
   }
 
   .header__theme-menu {
@@ -274,7 +271,7 @@
 @media (width < 768px) {
   .header {
     padding: 10px;
-    block-size: min(100vh, 41.75rem);
+    block-size: max(100vh, 41.75rem);
   }
 
   .decorated-zone::after {
@@ -317,6 +314,6 @@
   }
 
   .footer {
-    block-size: min(100vh, 41.75rem);
+    block-size: max(100vh, 41.75rem);
   }
 }
