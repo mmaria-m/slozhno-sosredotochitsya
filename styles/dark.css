@@ -60,7 +60,7 @@
   border-radius: 50%;
   box-shadow: 0 0 4px 3px var(--accent-text-color, #353430);
   inset-block-start: 7px;
-  inset-inline-end: 43px;
+  inset-inline-start: 43px;
 }
 }
 
